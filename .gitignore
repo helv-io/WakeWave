@@ -1,0 +1,27 @@
+# Node.js and npm
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled JavaScript files
+server.js
+
+# Upload and data directories
+uploads/
+data/
+
+# Log files
+*.log
+
+# IDE and editor directories
+.vscode/
+.idea/
+
+# macOS-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+
+# Environment files
+.env

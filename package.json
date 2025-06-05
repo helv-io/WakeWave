@@ -1,0 +1,25 @@
+{
+  "name": "wakewave",
+  "version": "1.0.0",
+  "description": "Collect wake word samples",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "tsc",
+    "dev": "npx nodemon --watch src --ext ts --exec ts-node src/server.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^2.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/multer": "^1.4.12",
+    "@types/uuid": "^10.0.0",
+    "i": "^0.3.7",
+    "npm": "^11.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

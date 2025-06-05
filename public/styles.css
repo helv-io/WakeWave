@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#record-button {
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  cursor: pointer;
+}
