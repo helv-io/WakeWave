@@ -35,12 +35,10 @@ function stopRecording(event) {
   if (recorder && recorder.state === 'recording') {
     recorder.stop()
     recorder.ondataavailable = async (e) => {
-      console.log(e)
       const blob = e.data
       statusP.textContent = 'Sending...'
       const formData = new FormData()
       formData.append('audio', blob, 'recording.webm')
-      console.log(formData)
       try {
         const response = await fetch('/upload', { method: 'POST', body: formData })
         const data = await response.json()
