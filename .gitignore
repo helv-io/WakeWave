@@ -6,9 +6,8 @@ yarn-error.log
 # Compiled JavaScript files
 server.js
 
-# Upload and data directories
-uploads/
-data/
+# Recordings directory
+recordings/
 
 # Log files
 *.log

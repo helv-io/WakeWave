@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wake Word Collector</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <h1>Wake Word Collector</h1>
-  <p>Please say: <span id="wake-word">Loading...</span></p>
-  <button id="record-button">Hold to record</button>
-  <p id="status"></p>
-  <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/logo-180.png">
+    <title>Wake Word Collector</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Wake Word Collector</h1>
+    <img src="/logo.png" alt="WakeWave Logo" class="logo">
+    <p>Please say...</p>
+    <h1 id="wake-word">Loading...</h1>
+    <button id="record-button">Hold to record</button>
+    <p id="status"></p>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+      }
+    </script>
+  </body>
 </html>

@@ -7,14 +7,16 @@ import { v4 as uuidv4 } from 'uuid'
 // Initialize Express app
 const app = express()
 
-// Set up data directory for storing uploaded files
-const dataDir = process.env.DATA_DIR || './data'
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir)
+// Set up recording directory and wake word directory
+const recordingDir = './recordings'
+const wakeWord = process.env.WAKE_WORD || 'Lancelot'
+const wakeWordDir = path.join(recordingDir, wakeWord)
+fs.mkdirSync(wakeWordDir, { recursive: true })
 
-// Configure Multer to save files directly to dataDir with unique names and original extensions
+// Configure Multer to save files to wakeWordDir with unique names and original extensions
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, dataDir)
+    cb(null, wakeWordDir)
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname)
@@ -29,7 +31,7 @@ app.use(express.static('public'))
 
 // Endpoint to return configuration data
 app.get('/api/config', (req, res) => {
-  res.json({ wakeWord: process.env.WAKE_WORD || 'Lancelot' })
+  res.json({ wakeWord: wakeWord })
 })
 
 // Endpoint to handle audio file uploads

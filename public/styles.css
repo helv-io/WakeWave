@@ -6,6 +6,31 @@ body {
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #1A0D2E;
+  color: #F5F6FF;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #F5F6FF; /* Fallback color */
+  background: linear-gradient(45deg, #00D1FF, #FF2A7D);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px #00D1FF;
+  margin: 20px 0;
+  animation: glow 2s infinite;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4em;
+  }
 }
 
 #record-button {
@@ -13,4 +38,56 @@ body {
   font-size: 24px;
   border-radius: 10px;
   cursor: pointer;
+  background-color: #00D1FF;
+  color: #1A0D2E;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+#record-button:hover {
+  background-color: #FF2A7D;
+}
+
+#status {
+  color: #F5F6FF;
+}
+
+.logo {
+  max-width: 80%;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px #00D1FF;
+  animation: fadeIn 1s, pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #00D1FF;
+  }
+  50% {
+    text-shadow: 0 0 20px #00D1FF, 0 0 30px #00D1FF;
+  }
+  100% {
+    text-shadow: 0 0 10px #00D1FF;
+  }
 }

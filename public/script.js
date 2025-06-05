@@ -44,7 +44,18 @@ function stopRecording(event) {
       try {
         const response = await fetch('/upload', { method: 'POST', body: formData })
         const data = await response.json()
-        statusP.textContent = data.status === 'success' ? 'Sample collected' : `Error: ${data.message}`
+        if (data.status === 'success') {
+          statusP.textContent = 'Sample collected! Want to do it again?'
+          // Trigger confetti effect
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 },
+            colors: ['#4C2F99', '#00D1FF', '#FF2A7D']
+          })
+        } else {
+          statusP.textContent = `Error: ${data.message}`
+        }
       } catch (err) {
         statusP.textContent = 'Error sending sample'
       }
