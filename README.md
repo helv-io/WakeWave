@@ -52,7 +52,11 @@
    ```bash
    docker run -p 3000:3000 -e WAKE_WORD=Lancelot -v /path/to/recordings:/app/recordings wakewave
    ```
-3. Access the app at `http://localhost:3000`.
+3. Alternatively, you can use the ghcr.io image:
+   ```bash
+   docker run -p 3000:3000 -e WAKE_WORD=Lancelot -v /path/to/recordings:/app/recordings ghcr.io/helv-io/wakewave:latest
+   ```
+4. Access the app at `http://localhost:3000`.
 
 ## Usage
 1. Open the web app in your browser.
