@@ -6,8 +6,20 @@ fetch('/api/config')
   .then(res => res.json())
   .then(data => wakeWordSpan.textContent = data.wakeWord)
 
+// Global stream variable
 let recorder
 let stream
+
+// Request microphone permission on page load
+window.addEventListener('load', async () => {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    statusP.textContent = 'Microphone permission granted!'
+  } catch (err) {
+    statusP.textContent = 'Microphone permission denied. Please allow microphone access to record.'
+    console.error('Microphone permission error:', err)
+  }
+})
 
 recordButton.addEventListener('mousedown', startRecording)
 recordButton.addEventListener('touchstart', startRecording)
@@ -17,12 +29,8 @@ recordButton.addEventListener('touchend', stopRecording)
 async function startRecording(event) {
   event.preventDefault()
   if (!stream) {
-    try {
-      stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    } catch (err) {
-      statusP.textContent = 'Microphone permission denied'
-      return
-    }
+    statusP.textContent = 'No microphone access. Please allow microphone permission.'
+    return
   }
   recorder = new MediaRecorder(stream)
   recorder.start()
