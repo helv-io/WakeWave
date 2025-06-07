@@ -33,7 +33,7 @@ h1 {
   }
 }
 
-#record-button {
+#record-button, #submit-button {
   padding: 20px;
   font-size: 24px;
   border-radius: 10px;
@@ -42,9 +42,10 @@ h1 {
   color: #1A0D2E;
   border: none;
   transition: background-color 0.3s;
+  margin-top: 20px;
 }
 
-#record-button:hover {
+#record-button:hover, #submit-button:hover {
   background-color: #FF2A7D;
 }
 
@@ -54,9 +55,19 @@ h1 {
 
 .logo {
   max-width: 80%;
+  max-height: 15%;
   margin-bottom: 30px;
   box-shadow: 0 0 10px #00D1FF;
   animation: fadeIn 1s, pulse 2s infinite;
+}
+
+#player-container {
+  background-color: rgba(0, 209, 255, 0.1);
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 @keyframes pulse {
