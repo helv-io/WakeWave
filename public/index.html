@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/logo-180.png">
-    <title>Wake Word Collector</title>
+    <title>The MicroWAVe WakeWord Collector</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Wake Word Collector</h1>
-    <img src="/logo.png" alt="WakeWave Logo" class="logo">
-    <p>Please say...</p>
-    <h1 id="wake-word">Loading...</h1>
-    <button id="record-button">Hold to record</button>
-    <div id="player-container" style="display: none;">
-      <p>Preview your recording:</p>
-      <audio id="audio-player" controls></audio>
-    </div>
-    <button id="submit-button" style="display: none;">Submit</button>
-    <p id="status"></p>
+    <main class="content">
+      <h1>Micro-WAV-e WakeWord Collector</h1>
+      <img src="/logo.svg" alt="WakeWave Logo" class="logo">
+      <p>Please say...</p>
+      <h1 id="wake-word">Loading...</h1>
+      <button id="record-button">Hold to record</button>
+      <div id="player-container" style="display: none;">
+        <p>Preview your recording:</p>
+        <audio id="audio-player" controls></audio>
+      </div>
+      <button id="submit-button" style="display: none;">Submit</button>
+      <p id="status"></p>
+    </main>
+    <footer>
+      <p>By submitting your wake word recordings, you agree that your audio will be collected, anonymized, and used solely for training the microWakeWord model for ESP devices. No other use will be made of your recordings.</p>
+    </footer>
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {

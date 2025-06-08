@@ -1,13 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #1A0D2E;
   color: #F5F6FF;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.content p {
+  text-align: center;
 }
 
 h1 {
@@ -16,7 +31,7 @@ h1 {
   font-size: 2.5em;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #F5F6FF; /* Fallback color */
+  color: #F5F6FF;
   background: linear-gradient(45deg, #00D1FF, #FF2A7D);
   background-clip: text;
   -webkit-background-clip: text;
@@ -27,22 +42,18 @@ h1 {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  h1 {
-    font-size: 4em;
-  }
-}
-
 #record-button, #submit-button {
-  padding: 20px;
-  font-size: 24px;
+  display: block; /* Changed to block for explicit centering */
+  width: 200px; /* Added to prevent full-width stretching */
+  margin: 20px auto; /* Adjusted to center and maintain spacing */
+  padding: 10px;
+  font-size: 16px;
   border-radius: 10px;
   cursor: pointer;
   background-color: #00D1FF;
   color: #1A0D2E;
   border: none;
   transition: background-color 0.3s;
-  margin-top: 20px;
 }
 
 #record-button:hover, #submit-button:hover {
@@ -54,9 +65,10 @@ h1 {
 }
 
 .logo {
+  display: block; /* Changed to block for explicit centering */
   max-width: 80%;
   max-height: 15%;
-  margin-bottom: 30px;
+  margin: 0 auto 30px; /* Adjusted to center */
   box-shadow: 0 0 10px #00D1FF;
   animation: fadeIn 1s, pulse 2s infinite;
 }
@@ -66,39 +78,46 @@ h1 {
   padding: 20px;
   padding-top: 0;
   border-radius: 10px;
-  margin-top: 20px;
+  margin: 20px auto; /* Adjusted to ensure centering */
   text-align: center;
+  max-width: 100%;
+}
+
+audio {
+  width: 100%;
+}
+
+footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.8em;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes glow {
-  0% {
-    text-shadow: 0 0 10px #00D1FF;
+  0% { text-shadow: 0 0 10px #00D1FF; }
+  50% { text-shadow: 0 0 20px #00D1FF, 0 0 30px #00D1FF; }
+  100% { text-shadow: 0 0 10px #00D1FF; }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4em;
   }
-  50% {
-    text-shadow: 0 0 20px #00D1FF, 0 0 30px #00D1FF;
-  }
-  100% {
-    text-shadow: 0 0 10px #00D1FF;
+  #record-button, #submit-button {
+    padding: 20px;
+    font-size: 24px;
   }
 }
