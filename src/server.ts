@@ -28,11 +28,11 @@ const convertToWav = (inputBuffer: Buffer, outputPath: string): Promise<void> =>
     inputStream.push(null) // End of stream
 
     ffmpeg(inputStream)
-      .inputFormat('webm') // Assuming the uploaded file is in WebM format
+      .inputFormat('webm')     // Assuming the uploaded file is in WebM format
       .audioCodec('pcm_s16le') // 16-bit PCM little-endian
-      .audioChannels(1)       // Mono
-      .audioFrequency(16000)  // 16 kHz sample rate
-      .format('wav')          // WAV format (16 bits per sample by default with pcm_s16le)
+      .audioChannels(1)        // Mono
+      .audioFrequency(16000)   // 16 kHz sample rate
+      .format('wav')           // WAV format (16 bits per sample by default with pcm_s16le)
       .on('end', () => resolve())
       .on('error', (err) => reject(err))
       .save(outputPath)
