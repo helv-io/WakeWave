@@ -1,5 +1,5 @@
-FROM node:lts-bookworm-slim
-RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
+FROM node:alpine
+RUN apk add --no-cache ffmpeg
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --omit=dev
