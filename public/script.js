@@ -1,9 +1,10 @@
 const wakeWordSpan = document.getElementById('wake-word')
 const recordButton = document.getElementById('record-button')
-const statusP = document.getElementById('status')
 const playerContainer = document.getElementById('player-container')
 const audioPlayer = document.getElementById('audio-player')
 const submitButton = document.getElementById('submit-button')
+const logo = document.getElementById('logoObject')
+let logoText
 
 fetch('/api/config')
   .then(res => res.json())
@@ -17,11 +18,10 @@ let currentAudioUrl = null
 
 // Request microphone permission on page load
 window.addEventListener('load', async () => {
+  logoText = logo.getSVGDocument().getElementById('text')
   try {
     stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    statusP.textContent = 'Microphone permission granted!'
   } catch (err) {
-    statusP.textContent = 'Microphone permission denied. Please allow microphone access to record.'
     console.error('Microphone permission error:', err)
   }
 })
@@ -33,17 +33,16 @@ recordButton.addEventListener('touchend', stopRecording)
 
 submitButton.addEventListener('click', async () => {
   if (!currentRecording) {
-    statusP.textContent = 'No recording to submit.'
     return
   }
-  statusP.textContent = 'Sending...'
+  logoText.textContent = 'Sending...'
   const formData = new FormData()
-  formData.append('audio', currentRecording, 'recording.webm')
+  formData.append('audio', currentRecording)
   try {
     const response = await fetch('/upload', { method: 'POST', body: formData })
     const data = await response.json()
     if (data.status === 'success') {
-      statusP.textContent = 'Sample collected! Want to do it again?'
+      logoText.textContent = 'Thanks!'
       confetti({
         particleCount: 100,
         spread: 70,
@@ -51,10 +50,10 @@ submitButton.addEventListener('click', async () => {
         colors: ['#4C2F99', '#00D1FF', '#FF2A7D']
       })
     } else {
-      statusP.textContent = `Error: ${data.message}`
+      logoText.textContent = `Error: ${data.message}`
     }
   } catch (err) {
-    statusP.textContent = 'Error sending sample'
+    logoText.textContent = 'Error sending sample'
   } finally {
     audioPlayer.pause()
     if (currentAudioUrl) {
@@ -70,7 +69,7 @@ submitButton.addEventListener('click', async () => {
 async function startRecording(event) {
   event.preventDefault()
   if (!stream) {
-    statusP.textContent = 'No microphone access. Please allow microphone permission.'
+    logoText.textContent = 'No microphone access. Please allow microphone permission.'
     return
   }
   audioPlayer.pause()
@@ -83,8 +82,9 @@ async function startRecording(event) {
   submitButton.style.display = 'none'
   recorder = new MediaRecorder(stream)
   recorder.start()
-  statusP.textContent = 'Recording...'
+  logoText.textContent = 'Recording...'
   recordButton.style.backgroundColor = 'red'
+  recordButton.innerText = 'Recording...'
 }
 
 function stopRecording(event) {
@@ -97,8 +97,9 @@ function stopRecording(event) {
       audioPlayer.src = currentAudioUrl
       playerContainer.style.display = 'block'
       submitButton.style.display = 'block'
-      statusP.textContent = 'Recording stopped. Preview and submit.'
+      logoText.textContent = 'Preview'
       recordButton.style.backgroundColor = ''
+      recordButton.innerText = 'Hold to record'
     }
   }
 }

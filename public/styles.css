@@ -15,7 +15,7 @@ body {
 
 .content {
   width: 100%;
-  max-width: 600px;
+  max-width: 600px; /* Mobile-first: 600px width */
   margin: 0 auto;
   padding: 0 10px;
   text-align: center;
@@ -69,6 +69,7 @@ h1 {
 }
 
 .logo {
+  padding-top: 20px;
   display: block;
   max-width: 80%;
   max-height: 15%;
@@ -78,12 +79,11 @@ h1 {
 
 #player-container {
   background-color: rgba(0, 209, 255, 0.1);
-  padding: 20px;
-  padding-top: 0;
+  padding: 3px 10px 10px 10px;
   border-radius: 10px;
   margin: 20px auto;
   text-align: center;
-  max-width: 100%;
+  max-width: 400px;
 }
 
 audio {
@@ -116,6 +116,9 @@ footer {
 }
 
 @media (min-width: 768px) {
+  .content {
+    max-width: 1200px; /* Wider content for desktop */
+  }
   h1 {
     font-size: 4em;
   }
